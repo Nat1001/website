@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Countdown</title>
+  <link rel="stylesheet" href="/style.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wdth,wght@99.2,800&display=swap" rel="stylesheet">
+  <!------------------>
+</head>
+<body></body>
+  <div>
+    <form action="../index.html">
+      <input class="home_button" type="submit" value="Home" />
+    </form>
+  </div>
+  <div class="countDown visible" id="countDown">
+    Loading...
+  </div>
+  <div class="time_elapsed" id="time_elapsed"></div>
+  <div class="flex_center">
+    <button class="permalink" id="permalink" onclick="copyLink();editTemp('Copied !','permalink', 1700, false)">Click to copy your permalink to this countdown</button>
+  </div>
+  <script src="./script.js"></script>
+</body>
