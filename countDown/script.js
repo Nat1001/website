@@ -21,7 +21,7 @@ let countDown = setInterval(function() {
     else{
         navigator.clipboard.readText()
         .then(text => {
-            if(text != window.location) {
+            if(text != window.location) { // Permalink no longer in clipboard
                 let permalink = document.getElementById("permalink")
                 if(permalink.classList.contains("flash")){
                     permalink.innerHTML = "Click to copy your permalink to this countdown"
