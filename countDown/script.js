@@ -53,7 +53,8 @@ let countDown = setInterval(function() {
 
                 // Bip sound
                 if(started == true) {
-                    let bip = new Audio("timer_ended_bip_sound.mp3");
+                    console.log("bip")
+                    let bip = new Audio("../timer_ended_bip_sound.mp3");
                     bip.volume = 1;
                     bip.play();
                 }
