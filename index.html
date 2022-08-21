@@ -1,55 +1,139 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <title>Countdown</title>
-  <link rel="stylesheet" href="./style.css">
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wdth,wght@99.2,800&display=swap" rel="stylesheet">
-  <!------------------>
-</head>
-<body>
-  <div class="titles">
-    Start a pre-configured countdown
-  </div>
-  <div class="flex_center">
-    <button class="timer_button" onclick="startCountDown(60)">1m</button>
-    <button class="timer_button" onclick="startCountDown(300)">5m</button>
-    <button class="timer_button" onclick="startCountDown(600)">10m</button>
-    <button class="timer_button" onclick="startCountDown(1800)">30m</button>
-    <button class="timer_button" onclick="startCountDown(3600)">1h</button>
-  </div>
-  <div>
-    <div class="titles">Or create a new one</div>
+  <head>
+    <title>Countdown</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/countdown_favicon.ico" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wdth,wght@99.2,800&display=swap"
+      rel="stylesheet"
+    />
+    <!------------------>
+  </head>
+  <body>
+    <div class="titles">Start a pre-configured countdown</div>
+    <div class="flex_center">
+      <button class="timer_button" onclick="startCountDown(60)">1m</button>
+      <button class="timer_button" onclick="startCountDown(300)">5m</button>
+      <button class="timer_button" onclick="startCountDown(600)">10m</button>
+      <button class="timer_button" onclick="startCountDown(1800)">30m</button>
+      <button class="timer_button" onclick="startCountDown(3600)">1h</button>
+    </div>
     <div>
-      <form>
+      <div class="titles">Or create a new one</div>
+      <div class="main">
+        <form>
+          <div class="flex_center">
+            <ion-icon
+              class="ion-icon"
+              id="days_up"
+              onclick="editCountDown(this, 86400000)"
+              name="caret-up-outline"
+            ></ion-icon>
+            <ion-icon
+              class="ion-icon"
+              id="hours_up"
+              onclick="editCountDown(this, 3600000)"
+              name="caret-up-outline"
+            ></ion-icon>
+            <ion-icon
+              class="ion-icon"
+              id="minutes_up"
+              onclick="editCountDown(this, 60000)"
+              name="caret-up-outline"
+            ></ion-icon>
+            <ion-icon
+              class="ion-icon"
+              id="seconds_up"
+              onclick="editCountDown(this, 1000)"
+              name="caret-up-outline"
+            ></ion-icon>
+          </div>
+          <div class="flex_center">
+            <input
+              class="countDownInput"
+              type="text"
+              value="0d"
+              id="days_duration"
+            />
+            <input
+              class="countDownInput"
+              type="text"
+              value="0h"
+              id="hours_duration"
+            />
+            <input
+              class="countDownInput"
+              type="text"
+              value="0m"
+              id="minutes_duration"
+            />
+            <input
+              class="countDownInput"
+              type="text"
+              value="0s"
+              id="seconds_duration"
+            />
+          </div>
+          <div class="flex_center">
+            <ion-icon
+              class="ion-icon locked"
+              id="days_down"
+              onclick="editCountDown(this, -86400000)"
+              name="caret-down-outline"
+            ></ion-icon>
+            <ion-icon
+              class="ion-icon locked"
+              id="hours_down"
+              onclick="editCountDown(this, -3600000)"
+              name="caret-down-outline"
+            ></ion-icon>
+            <ion-icon
+              class="ion-icon locked"
+              id="minutes_down"
+              onclick="editCountDown(this, -60000)"
+              name="caret-down-outline"
+            ></ion-icon>
+            <ion-icon
+              class="ion-icon locked"
+              id="seconds_down"
+              onclick="editCountDown(this, -1000)"
+              name="caret-down-outline"
+            ></ion-icon>
+          </div>
+        </form>
         <div class="flex_center">
-          <ion-icon class="ion-icon" id="days_up" onclick="editCountDown(this, 86400000)" name="caret-up-outline"></ion-icon>
-          <ion-icon class="ion-icon" id="hours_up" onclick="editCountDown(this, 3600000)" name="caret-up-outline"></ion-icon>
-          <ion-icon class="ion-icon" id="minutes_up" onclick="editCountDown(this, 60000)" name="caret-up-outline"></ion-icon>
-          <ion-icon class="ion-icon" id="seconds_up" onclick="editCountDown(this, 1000)" name="caret-up-outline"></ion-icon>
+          <button
+            class="start_button locked"
+            id="start"
+            onclick="startCountDown(0)"
+          >
+            Start countdown
+          </button>
         </div>
         <div class="flex_center">
-          <input class="countDownInput" type="text" value="0d" id="days_duration">
-          <input class="countDownInput" type="text" value="0h" id="hours_duration">
-          <input class="countDownInput" type="text" value="0m" id="minutes_duration">
-          <input class="countDownInput" type="text" value="0s" id="seconds_duration">
+          <button
+            class="loading_last_timer_button"
+            id="last_timer_button"
+            onclick="startCountDown(x)"
+            >
+            Loading your last timer...
+          </button>
         </div>
-        <div class="flex_center">
-          <ion-icon class="ion-icon locked" id="days_down" onclick="editCountDown(this, -86400000)" name="caret-down-outline"></ion-icon>
-          <ion-icon class="ion-icon locked" id="hours_down" onclick="editCountDown(this, -3600000)"  name="caret-down-outline"></ion-icon>
-          <ion-icon class="ion-icon locked" id="minutes_down" onclick="editCountDown(this, -60000)"  name="caret-down-outline"></ion-icon>
-          <ion-icon class="ion-icon locked" id="seconds_down" onclick="editCountDown(this, -1000)"  name="caret-down-outline"></ion-icon>
-        </div>
-      </form>
-      <div class="flex_center">
-        <button class="start_button locked" id="start" onclick="startCountDown(0)">Start countdown</button>
       </div>
     </div>
-  </div>
-  <script src="./script.js"></script>
-  <!-- Ionicons -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
+    <script src="./script.js"></script>
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
