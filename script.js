@@ -34,14 +34,14 @@ function startCountDown(time) {
     let duration = userDuration();
 
     open(
-      `/countDown.html?end=${
+      `countDown.html?end=${
         Date.now() + duration
       }&start=${Date.now()}`,
       "_self"
     );
   } else {
     open(
-      `/countDown.html?end=${
+      `countDown.html?end=${
         Date.now() + time * 1000
       }&start=${Date.now()}`,
       "_self"
