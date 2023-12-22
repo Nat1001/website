@@ -32,14 +32,10 @@ let countDown = setInterval(function () {
           // Permalink no longer in clipboard
           let permalink = document.getElementById("permalink");
           if (permalink.classList.contains("flash")) {
-            permalink.innerHTML =
-              "Click to copy your permalink to this countdown";
+            permalink.innerHTML = "Copy permalink";
             permalink.classList.remove("flash");
           } else {
-            if (
-              permalink.textContent !=
-              "Click to copy your permalink to this countdown"
-            ) {
+            if (permalink.textContent != "Copy permalink") {
               permalink.classList.add("flash");
             }
           }
