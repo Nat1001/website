@@ -22,35 +22,6 @@ let countDown = setInterval(function () {
   let now = new Date().getTime();
   let distance = countDownDate - now;
 
-  // Update copyToClipboard button
-  if (!navigator.clipboard) {
-  } else {
-    navigator.clipboard
-      .readText()
-      .then((text) => {
-        if (text != window.location) {
-          // Permalink no longer in clipboard
-          let permalink = document.getElementById("permalink");
-          if (permalink.classList.contains("flash")) {
-            permalink.innerHTML =
-              "Click to copy your permalink to this countdown";
-            permalink.classList.remove("flash");
-          } else {
-            if (
-              permalink.textContent !=
-              "Click to copy your permalink to this countdown"
-            ) {
-              permalink.classList.add("flash");
-            }
-          }
-        }
-      })
-      .catch((err) => {
-        // Can't access to clipboard content, maybe cause tab isn't focused
-        // console.error('Failed to read clipboard contents: ', err);
-      });
-  }
-
   if (isNaN(distance) || countDownDate < startedAt) {
     clearInterval(countDown);
     countDownElement.innerHTML = "Incorrect date provided";
@@ -66,7 +37,7 @@ let countDown = setInterval(function () {
 
         // Bip sound
         if (started == true) {
-          let bip = new Audio("../assets/timer_ended_bip_sound.mp3");
+          let bip = new Audio("./assets/timer_ended_bip_sound.mp3");
           bip.volume = 1;
           bip.play();
         }
